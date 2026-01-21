@@ -1,9 +1,25 @@
-import { FaGraduationCap, FaBriefcase, FaCode, FaServer, FaDatabase, FaPalette, FaReact, FaNodeJs } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaGraduationCap, FaBriefcase, FaCode, FaServer, FaDatabase, FaPalette, FaReact, FaNodeJs, FaCertificate, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiTailwindcss, SiMongodb } from 'react-icons/si';
 import { useTheme } from '../context/ThemeContext';
 
+// Import certificates
+import AisCert from '../assets/Certificates/Ais.JPG';
+import FigmaCert from '../assets/Certificates/Figma.png';
+import CsslCert from '../assets/Certificates/cssl.JPG';
+import CsslCert2 from '../assets/Certificates/cssl2.JPG';
+
 const About = () => {
     const { isDarkMode } = useTheme();
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [currentCertIndex, setCurrentCertIndex] = useState(0);
+
+    const certificates = [
+        { image: AisCert, title: 'AIS Certificate', description: 'Artificial Intelligence Systems' },
+        { image: FigmaCert, title: 'Figma Certificate', description: 'UI/UX Design Proficiency' },
+        { image: CsslCert, title: 'CSSL Certificate', description: 'Computer Society of Sri Lanka' },
+        { image: CsslCert2, title: 'CSSL Certificate 2', description: 'Advanced Certification' },
+    ];
 
     const skills = [
         { name: 'React & Next.js', level: 90, icon: FaReact, color: 'text-cyan-400' },
@@ -169,6 +185,106 @@ const About = () => {
                         ))}
                     </div>
                 </div>
+
+                {/* Certificates Section */}
+                <div className="mb-20">
+                    <h2 className="text-4xl font-bold text-center mb-16 gradient-text">Certifications</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {certificates.map((cert, index) => (
+                            <div
+                                key={index}
+                                className="card group cursor-pointer overflow-hidden"
+                                style={{ animationDelay: `${index * 0.1}s` }}
+                                onClick={() => {
+                                    setCurrentCertIndex(index);
+                                    setLightboxOpen(true);
+                                }}
+                            >
+                                <div className="relative overflow-hidden rounded-xl">
+                                    <img
+                                        src={cert.image}
+                                        alt={cert.title}
+                                        className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                        <div className="text-white">
+                                            <h3 className="font-bold text-lg mb-1">{cert.title}</h3>
+                                            <p className="text-sm text-gray-300">{cert.description}</p>
+                                        </div>
+                                    </div>
+                                    <div className="absolute top-3 right-3 bg-purple-500/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <FaCertificate className="text-white text-xl" />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Lightbox Modal */}
+                {lightboxOpen && (
+                    <div
+                        className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+                        onClick={() => setLightboxOpen(false)}
+                    >
+                        {/* Close Button */}
+                        <button
+                            onClick={() => setLightboxOpen(false)}
+                            className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors duration-300 z-50 bg-white/10 backdrop-blur-sm rounded-full p-3 hover:bg-white/20"
+                        >
+                            <FaTimes className="text-2xl" />
+                        </button>
+
+                        {/* Previous Button */}
+                        {certificates.length > 1 && (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setCurrentCertIndex((prev) => (prev === 0 ? certificates.length - 1 : prev - 1));
+                                }}
+                                className="absolute left-4 text-white hover:text-purple-400 transition-colors duration-300 z-50 bg-white/10 backdrop-blur-sm rounded-full p-3 hover:bg-white/20"
+                            >
+                                <FaChevronLeft className="text-2xl" />
+                            </button>
+                        )}
+
+                        {/* Image Container */}
+                        <div
+                            className="relative max-w-5xl max-h-[90vh] animate-fade-in"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <img
+                                src={certificates[currentCertIndex].image}
+                                alt={certificates[currentCertIndex].title}
+                                className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+                            />
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 rounded-b-lg">
+                                <h3 className="text-white text-2xl font-bold mb-2">
+                                    {certificates[currentCertIndex].title}
+                                </h3>
+                                <p className="text-gray-300 text-lg">
+                                    {certificates[currentCertIndex].description}
+                                </p>
+                                <p className="text-gray-400 text-sm mt-2">
+                                    {currentCertIndex + 1} / {certificates.length}
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Next Button */}
+                        {certificates.length > 1 && (
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setCurrentCertIndex((prev) => (prev === certificates.length - 1 ? 0 : prev + 1));
+                                }}
+                                className="absolute right-4 text-white hover:text-purple-400 transition-colors duration-300 z-50 bg-white/10 backdrop-blur-sm rounded-full p-3 hover:bg-white/20"
+                            >
+                                <FaChevronRight className="text-2xl" />
+                            </button>
+                        )}
+                    </div>
+                )}
 
                 {/* Call to Action */}
                 <div className="text-center animate-slide-up" style={{ animationDelay: '0.6s' }}>

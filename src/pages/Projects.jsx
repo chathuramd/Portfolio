@@ -3,22 +3,26 @@ import { FaArrowLeft, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons
 import { useTheme } from '../context/ThemeContext';
 
 // Import all images
-import Advertisement1 from '../assets/Avertisement/Advertisement1.png';
-import Advertisement2 from '../assets/Avertisement/Advertisement2.png';
-import Advertisement3 from '../assets/Avertisement/Advertisement3.png';
-import Advertisement4 from '../assets/Avertisement/Advertisement4.jpg';
-import Advertisement5 from '../assets/Avertisement/Advertisement5.png';
-import Advertisement6 from '../assets/Avertisement/Advertisement6.jpg';
-import Advertisement7 from '../assets/Avertisement/Advertisement7.png';
-import Advertisement8 from '../assets/Avertisement/Advertisement8.jpg';
-import Advertisement9 from '../assets/Avertisement/Advertisement9.png';
-import Advertisement10 from '../assets/Avertisement/Advertisement10.png';
-import Advertisement11 from '../assets/Avertisement/Advertisement11.jpg';
-import Advertisement12 from '../assets/Avertisement/Advertisement12.jpg';
-import Advertisement13 from '../assets/Avertisement/Advertisement13.jpg';
-import Advertisement14 from '../assets/Avertisement/Advertisement14.png';
-import Advertisement15 from '../assets/Avertisement/Advertisement15.png';
-import Advertisement16 from '../assets/Avertisement/Advertisement16.png';
+import Advertisement1 from '../assets/Advertisement/Advertisement1.png';
+import Advertisement2 from '../assets/Advertisement/Advertisement2.png';
+import Advertisement3 from '../assets/Advertisement/Advertisement3.png';
+import Advertisement4 from '../assets/Advertisement/Advertisement4.jpg';
+import Advertisement5 from '../assets/Advertisement/Advertisement5.png';
+import Advertisement6 from '../assets/Advertisement/Advertisement6.jpg';
+import Advertisement7 from '../assets/Advertisement/Advertisement7.png';
+import Advertisement8 from '../assets/Advertisement/Advertisement8.jpg';
+import Advertisement9 from '../assets/Advertisement/Advertisement9.png';
+import Advertisement10 from '../assets/Advertisement/Advertisement10.png';
+import Advertisement11 from '../assets/Advertisement/Advertisement11.jpg';
+import Advertisement12 from '../assets/Advertisement/Advertisement12.jpg';
+import Advertisement13 from '../assets/Advertisement/Advertisement13.jpg';
+import Advertisement14 from '../assets/Advertisement/Advertisement14.png';
+import Advertisement15 from '../assets/Advertisement/Advertisement15.png';
+import Advertisement16 from '../assets/Advertisement/Advertisement16.png';
+import Advertisement17 from '../assets/Advertisement/Hasandi (2).png';
+import Advertisement18 from '../assets/Advertisement/New.png';
+import Advertisement19 from '../assets/Advertisement/bedsheets 2.jpg';
+import Advertisement20 from '../assets/Advertisement/class post.png';
 
 import SpecialDay1 from '../assets/Special day post/SpecialDay1.png';
 import SpecialDay2 from '../assets/Special day post/SpecialDay2.jpg';
@@ -63,6 +67,10 @@ const Projects = () => {
                         { src: Advertisement14, title: 'Advertisement 14' },
                         { src: Advertisement15, title: 'Advertisement 15' },
                         { src: Advertisement16, title: 'Advertisement 16' },
+                        { src: Advertisement17, title: 'Hasandi Advertisement' },
+                        { src: Advertisement18, title: 'New Advertisement' },
+                        { src: Advertisement19, title: 'Bedsheets Advertisement' },
+                        { src: Advertisement20, title: 'Class Post Advertisement' },
                     ]
                 },
                 'Special Day Posts': {
@@ -174,8 +182,8 @@ const Projects = () => {
                     <button
                         onClick={selectedSubcategory ? handleBackToSubcategories : handleBackToCategories}
                         className={`mb-8 flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 ${isDarkMode
-                                ? 'bg-white/10 hover:bg-white/20 text-white'
-                                : 'bg-black/10 hover:bg-black/20 text-gray-900'
+                            ? 'bg-white/10 hover:bg-white/20 text-white'
+                            : 'bg-black/10 hover:bg-black/20 text-gray-900'
                             }`}
                     >
                         <FaArrowLeft />
